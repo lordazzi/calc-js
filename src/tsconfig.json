@@ -1,0 +1,21 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "declaration": true,
+        "emitDecoratorMetadata": true,
+        "strictNullChecks": false,
+        "experimentalDecorators": true,
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "module": "amd",
+        "moduleResolution": "classic",
+        "outDir": "../dist/",
+        "sourceMap": false,
+        "target": "es5"
+    },
+    "exclude": [
+        "**/*.spec.ts"
+    ]
+}

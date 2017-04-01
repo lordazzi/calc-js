@@ -1,0 +1,46 @@
+{
+  "name": "calc-js",
+  "version": "1.0.0",
+  "description": "Handle JavaScript operations, avoiding the native problems of the language",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "karma start",
+    "build": "tsc --project src -pretty & copy \"package.json\" \"dist/package.json\" & copy \"README.md\" \"dist/README.md\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lordazzi/calculator.git"
+  },
+  "keywords": [
+    "bigdecimal",
+    "js",
+    "javascript",
+    "typescript",
+    "angular",
+    "angular2",
+    "ng2",
+    "ng",
+    "nan",
+    "calculator",
+    "ieee"
+  ],
+  "author": "Ricardo Azzi Silva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lordazzi/calculator/issues"
+  },
+  "homepage": "https://github.com/lordazzi/calculator#readme",
+  "devDependencies": {
+    "es6-module-loader": "0.17.11",
+    "jasmine": "2.5.3",
+    "karma": "1.5.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-jasmine": "1.1.0",
+    "karma-systemjs": "0.16.0",
+    "karma-typescript-preprocessor": "0.3.1",
+    "progress": "1.1.8",
+    "systemjs": "0.19.3",
+    "tslint": "4.4.2",
+    "typescript": "2.2.1"
+  }
+}
