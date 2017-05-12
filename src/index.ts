@@ -1,8 +1,4 @@
 
-const gerarBaseDaFracao = (n1: number, n2: number): number => {
-
-}
-
 export class Calc {
 
     public static sum(n1: number, n2: number): number {
