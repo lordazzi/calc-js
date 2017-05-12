@@ -66,6 +66,10 @@ describe('Calc', () => {
         expect(Calc.sum(0.5, -0.3)).toBe(0.2);
     });
 
+    it('Testando soma com decimais problematicos (0.5 + -0.3)', () => {
+        expect(Calc.sum(1.501, 2.3)).toBe(3.801);
+    });
+
     it('Testando subtração com decimais (3.5 - 1)', () => {
         expect(Calc.minus(3.5, 1)).toBe(2.5);
     });
