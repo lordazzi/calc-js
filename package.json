@@ -1,15 +1,15 @@
 {
   "name": "calc-js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Handle JavaScript operations, avoiding the native problems of the language",
   "main": "dist/index.js",
   "scripts": {
     "test": "karma start",
-    "build": "tsc --project src -pretty & copy \"package.json\" \"dist/package.json\" & copy \"README.md\" \"dist/README.md\""
+    "build": "tsc --project src -pretty"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lordazzi/calculator.git"
+    "url": "git+https://github.com/lordazzi/calc-js.git"
   },
   "keywords": [
     "bigdecimal",
@@ -22,14 +22,17 @@
     "ng",
     "nan",
     "calculator",
-    "ieee"
+    "ieee 754",
+    "ieee problem",
+    "floating-point arithmetic",
+    "floating-point accuracy problems"
   ],
   "author": "Ricardo Azzi Silva",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lordazzi/calculator/issues"
+    "url": "https://github.com/lordazzi/calc-js/issues"
   },
-  "homepage": "https://github.com/lordazzi/calculator#readme",
+  "homepage": "https://github.com/lordazzi/calc-js#readme",
   "devDependencies": {
     "es6-module-loader": "0.17.11",
     "jasmine": "2.5.3",
