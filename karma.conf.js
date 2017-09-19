@@ -30,10 +30,26 @@ module.exports = function (config) {
             ]
         },
 
+        coverageIstanbulReporter: {
+            reports: ['html', 'lcovonly'],
+            fixWebpackSourcePaths: true
+        },
+
+        customLaunchers: {
+            ChromeHeadless: {
+                base: 'Chrome',
+                flags: [
+                    '--headless',
+                    '--disable-gpu',
+                    '--remote-debugging-port=9222',
+                ],
+            }
+        },
+
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress'],
+        reporters: ['progress', 'kjhtml'],
 
         // web server port
         port: 9876,
@@ -50,10 +66,10 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: [ 'Chrome' ],
+        browsers: ['ChromeHeadless'],
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false
+        singleRun: true
     });
 };
