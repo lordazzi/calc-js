@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+- '0.12'
+sudo: false
+cache:
+  directories:
+  - node_modules
+before_install:
+- nvm install 7
+- npm install -g npm && node -v && npm -v
+- npm install -g typescript && tsc -v
+install:
+- npm install
+script:
+- npm run build
