@@ -130,7 +130,7 @@ describe('Calc', () => {
     });
 
     it('Testando cálculo com multiplicação com dois decimais (0.56 * 0.56)', () => {
-        expect(Calc.multiply(0.56, 0.56)).toBe(31.36);
+        expect(Calc.multiply(0.56, 0.56)).toBe(0.3136);
     });
 
     it('Testando cálculo com multiplicação com dois decimais (100 * 0.56)', () => {
