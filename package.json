@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/lordazzi/calc-js#readme",
   "devDependencies": {
+    "@types/jasmine": "2.8.6",
     "es6-module-loader": "0.17.11",
     "jasmine": "2.5.3",
     "karma": "1.5.0",

@@ -58,15 +58,19 @@ export class Calc {
         }
 
         let n1Length = String(n1).replace(/\d+\.?/, '').length,
-            n2Length = String(n2).replace(/\d+\.?/, '').length,
-            length = n1Length + n2Length;
+            n2Length = String(n2).replace(/\d+\.?/, '').length;
 
-        let baseDecimal: string | number = '1';
-        while (length--) baseDecimal = `${baseDecimal}0`;
-        baseDecimal = Number(baseDecimal);
+        let n1BaseDecimal: string | number = '1';
+        while (length--) n1BaseDecimal = `${n1BaseDecimal}0`;
+        n1BaseDecimal = Number(n1BaseDecimal);
 
-        n1 = n1 * baseDecimal;
+        let n2BaseDecimal: string | number = '1';
+        while (length--) n2BaseDecimal = `${n2BaseDecimal}0`;
+        n2BaseDecimal = Number(n2BaseDecimal);
 
-        return (n1 * n2) / baseDecimal;
+        n1 = Math.floor(n1 * n1BaseDecimal);
+        n2 = Math.floor(n2 * n1BaseDecimal);
+
+        return (n1 * n2) / (n1BaseDecimal * n1BaseDecimal);
     }
 }
