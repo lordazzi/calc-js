@@ -1,3 +1,6 @@
+[![npm version](https://badge.fury.io/js/calc-js.svg)](https://badge.fury.io/js/calc-js)
+[![Build Status](https://travis-ci.org/lordazzi/calc-js.svg?branch=master)](https://travis-ci.org/lordazzi/calc-js)
+
 # Calc JS
 Handle JavaScript operations, avoiding the native problems of the language.
 
