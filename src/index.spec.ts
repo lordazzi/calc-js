@@ -1,8 +1,3 @@
-declare var describe: any;
-declare var beforeEach: any;
-declare var it: any;
-declare var expect: any;
-
 import { Calc } from './index';
 
 describe('Calc', () => {
@@ -126,7 +121,27 @@ describe('Calc', () => {
         expect(Calc.multiply(Calc.divide(2199, 100), 5)).toBe(109.95);
     });
 
-    it('Testando soma letras', () => {
+    it('Testando cálculo com multiplicação com decimal (0.56 * 100)', () => {
+        expect(Calc.multiply(0.56, 100)).toBe(56);
+    });
+
+    it('Testando cálculo com multiplicação com dois decimais (5.6 * 5.6)', () => {
+        expect(Calc.multiply(5.6, 5.6)).toBe(31.36);
+    });
+
+    it('Testando cálculo com multiplicação com dois decimais (0.56 * 0.56)', () => {
+        expect(Calc.multiply(0.56, 0.56)).toBe(0.3136);
+    });
+
+    it('Testando cálculo com multiplicação com dois decimais (100 * 0.56)', () => {
+        expect(Calc.multiply(100, 0.56)).toBe(56);
+    });
+    
+    it('Testando cálculo com divisão com decimal (5.6 / 10)', () => {
+        expect(Calc.divide(5.6, 10)).toBe(0.56);
+    });
+
+    xit('Testando soma letras', () => {
         expect(() => {
             Calc.sum(NaN, 1);
         }).toThrow();

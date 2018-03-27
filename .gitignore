@@ -1,3 +1,4 @@
 node_modules
 dist
 .vscode
+debug.log
