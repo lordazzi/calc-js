@@ -36,13 +36,10 @@ module.exports = function (config) {
         },
 
         customLaunchers: {
-            ChromeHeadless: {
-                base: 'Chrome',
-                flags: [
-                    '--headless',
-                    '--disable-gpu',
-                    '--remote-debugging-port=9222',
-                ],
+            PhantomJS: {
+                base: 'PhantomJS',
+                flags: ['--load-images=true'],
+                debug: true
             }
         },
 
@@ -66,7 +63,7 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['ChromeHeadless'],
+        browsers: ['PhantomJS'],
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
