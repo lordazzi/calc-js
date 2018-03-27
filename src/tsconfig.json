@@ -9,6 +9,9 @@
             "es6",
             "dom"
         ],
+        "typeRoots": [
+            "../node_modules/@types"
+        ],
         "module": "amd",
         "moduleResolution": "classic",
         "outDir": "../dist/",
