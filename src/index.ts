@@ -73,8 +73,8 @@ export class Calc {
             n2BaseDecimal = Number(n2BaseDecimal);
         }
 
-        n1 = Math.floor(n1 * n1BaseDecimal);
-        n2 = Math.floor(n2 * n2BaseDecimal);
+        n1 = Math.round(n1 * n1BaseDecimal);
+        n2 = Math.round(n2 * n2BaseDecimal);
 
         return (n1 * n2) / (n1BaseDecimal * n2BaseDecimal);
     }
