@@ -125,6 +125,10 @@ describe('Calc', () => {
         expect(Calc.multiply(0.56, 100)).toBe(56);
     });
 
+    it('Testando cálculo com multiplicação com decimal (17.99 * 100)', () => {
+        expect(Calc.multiply(17.99, 100)).toBe(1799);
+    });
+
     it('Testando cálculo com multiplicação com dois decimais (5.6 * 5.6)', () => {
         expect(Calc.multiply(5.6, 5.6)).toBe(31.36);
     });
