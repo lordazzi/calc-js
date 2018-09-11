@@ -4,6 +4,9 @@ node_js:
 sudo: required
 addons:
   chrome: stable
+cache:
+  directories:
+  - node_modules
 before_install:
 - npm install -g typescript && tsc -v
 - npm install -g karma
