@@ -49,4 +49,3 @@ npm install calc-js
 
 ## TODOs
 - Create option in library to transform NaN in an exception
-
