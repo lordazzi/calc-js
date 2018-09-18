@@ -85,6 +85,14 @@ describe('Calc', () => {
         expect(Calc.minus(2.1, 0.101)).toBe(1.999);
     });
 
+    it('Testando subtração com decimais problematicos (2499.9 - 1500)', () => {
+        expect(Calc.minus(2499.9, 1500)).toBe(999.9);
+    });
+
+    it('Testando subtração com decimais problematicos (2499.9 - 1500 - 999.9)', () => {
+        expect(Calc.minus(Calc.minus(2499.9, 1500), 999.9)).toBe(0);
+    });
+
     it('Testando subtração com decimais problematicos (1.9 - 0.001)', () => {
         expect(Calc.minus(1.9, 0.001)).toBe(1.899);
     });
