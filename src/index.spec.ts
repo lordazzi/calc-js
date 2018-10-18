@@ -29,6 +29,10 @@ describe('Calc', () => {
         expect(Calc.sum(1.9, 0.001)).toBe(1.901);
     });
 
+    it('Testando soma com decimais (593.33 + 1000.01)', () => {
+        expect(Calc.sum(593.33, 1000.01)).toBe(1593.34);
+    });
+
     it('Testando soma com decimais (3.5 + -1)', () => {
         expect(Calc.sum(3.5, -1)).toBe(2.5);
     });
@@ -101,6 +105,10 @@ describe('Calc', () => {
         expect(Calc.minus(1.5, -1)).toBe(2.5);
     });
 
+    it('Testando subtração com decimais (1000 - 593.33)', () => {
+        expect(Calc.minus(1000, 593.33)).toBe(406.67);
+    });
+
     it('Testando subtração com decimais problematicos (-0.4 - -0.1)', () => {
         expect(Calc.minus(-0.4, -0.1)).toBe(-0.3);
     });
@@ -133,6 +141,10 @@ describe('Calc', () => {
         expect(Calc.multiply(0.56, 100)).toBe(56);
     });
 
+    it('Testando cálculo com multiplicação com decimal (593.33 * 100)', () => {
+        expect(Calc.multiply(593.33, 100)).toBe(59333);
+    });
+
     it('Testando cálculo com multiplicação com decimal (17.99 * 100)', () => {
         expect(Calc.multiply(17.99, 100)).toBe(1799);
     });
@@ -151,6 +163,10 @@ describe('Calc', () => {
     
     it('Testando cálculo com divisão com decimal (5.6 / 10)', () => {
         expect(Calc.divide(5.6, 10)).toBe(0.56);
+    });
+
+    it('Testando cálculo com divisão com decimal (593.33 / 10)', () => {
+        expect(Calc.divide(593.33, 10)).toBe(59.333);
     });
 
     xit('Testando soma letras', () => {
