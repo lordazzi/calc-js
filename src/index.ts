@@ -14,8 +14,8 @@ export class Calc {
         while (length--) baseDecimal = `${baseDecimal}0`;
         baseDecimal = Number(baseDecimal);
 
-        n1 = n1 * baseDecimal;
-        n2 = n2 * baseDecimal;
+        n1 = Math.round(n1 * baseDecimal);
+        n2 = Math.round(n2 * baseDecimal);
 
         return (n1 + n2) / baseDecimal;
     }
@@ -33,8 +33,8 @@ export class Calc {
         while (length--) baseDecimal = `${baseDecimal}0`;
         baseDecimal = Number(baseDecimal);
 
-        n1 = n1 * baseDecimal;
-        n2 = n2 * baseDecimal;
+        n1 = Math.round(n1 * baseDecimal);
+        n2 = Math.round(n2 * baseDecimal);
 
         return (n1 - n2) / baseDecimal;
     }
@@ -46,7 +46,7 @@ export class Calc {
         while (length--) baseDecimal = `${baseDecimal}0`;
         baseDecimal = Number(baseDecimal);
 
-        n1 = n1 * baseDecimal;
+        n1 = Math.round(n1 * baseDecimal);
 
         return (n1 / n2) / baseDecimal;
     }
