@@ -14,6 +14,8 @@ This is a well-known problem, in Java they have developed a class called BigDeci
 
 ![Error example](docs/problem.png)
 
+![Error example](docs/problem2.png)
+
 I understand that a problem is generated when you perform a simple calculation using some decimal values, as in the example below:
 ```javascript
 0.2 + 0.1 = 0.30000000000000004
