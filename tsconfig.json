@@ -22,6 +22,7 @@
     "target": "es5"
   },
   "exclude": [
+    "index.ts",
     "**/*.spec.ts"
   ]
 }

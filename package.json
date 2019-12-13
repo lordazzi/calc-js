@@ -1,11 +1,11 @@
 {
   "name": "calc-js",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Handle JavaScript operations, avoiding the native problems of the language",
   "main": "dist/index.js",
   "scripts": {
     "test": "karma start",
-    "lint": "tslint --project=tsconfig.json",
+    "lint": "tslint --project tsconfig.json",
     "build": "gulp generate-package"
   },
   "repository": {
