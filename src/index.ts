@@ -1,6 +1,10 @@
-export class Calc {
+export class Calculator {
 
-  public static sum(n1: number, n2: number): number {
+  sum(n1: number, n2: number): number {
+    const errorMessage = `${n1}+${n2}`;
+    this.isNaN(n1, errorMessage);
+    this.isNaN(n2, errorMessage);
+
     if (n1 % 1 === 0 && n2 % 1 === 0) {
       return n1 + n2;
     }
@@ -21,7 +25,11 @@ export class Calc {
     return (n1 + n2) / baseDecimal;
   }
 
-  public static minus(n1: number, n2: number): number {
+  minus(n1: number, n2: number): number {
+    const errorMessage = `${n1}-${n2}`;
+    this.isNaN(n1, errorMessage);
+    this.isNaN(n2, errorMessage);
+
     if (n1 % 1 === 0 && n2 % 1 === 0) {
       return n1 - n2;
     }
@@ -42,7 +50,10 @@ export class Calc {
     return (n1 - n2) / baseDecimal;
   }
 
-  public static divide(n1: number, n2: number): number {
+  divide(n1: number, n2: number): number {
+    const errorMessage = `${n1}/${n2}`;
+    this.isNaN(n1, errorMessage);
+    this.isNaN(n2, errorMessage);
 
     let length = String(n1 / n2).replace(/\d+\.?/, '').length;
     let baseDecimal: string | number = '1';
@@ -56,8 +67,11 @@ export class Calc {
     return (n1 / n2) / baseDecimal;
   }
 
+  multiply(n1: number, n2: number): number {
+    const errorMessage = `${n1}*${n2}`;
+    this.isNaN(n1, errorMessage);
+    this.isNaN(n2, errorMessage);
 
-  public static multiply(n1: number, n2: number): number {
     if (n1 % 1 === 0 && n2 % 1 === 0) {
       return n1 * n2;
     }
@@ -87,4 +101,16 @@ export class Calc {
 
     return (n1 * n2) / (n1BaseDecimal * n2BaseDecimal);
   }
+
+  private isNaN(number: unknown, errorMessage: string): number is number {
+    if (isNaN(<number>number)) {
+      throw new Error(`NaN (not a number) found in calc operation: "${errorMessage}"`);
+    }
+
+    return true;
+  }
 }
+
+const Calc = new Calculator();
+export { Calc };
+
