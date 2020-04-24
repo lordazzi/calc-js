@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "karma start",
-    "lint": "tslint --project tsconfig.json",
-    "build": "gulp generate-package"
+    "lint": "tslint --project tsconfig.app.json",
+    "build": "tsc --project tsconfig.app.json --out build/calc.amd.js --module amd;"
   },
   "repository": {
     "type": "git",
