@@ -18,12 +18,12 @@ This is a well-known problem, in Java they have developed a class called BigDeci
 
 ![Error example](docs/problem2.png)
 
-I understand that a problem is generated when you perform a simple calculation using some decimal values, as in the example below:
+The problem is generated when you perform a simple calculation using some decimal values, example:
 ```javascript
 0.2 + 0.1 = 0.30000000000000004
 ```
 
-But for some reason, I don't know if it is because of something specific to JavaScript or the IEEE 754 specification, but the same problem does not occur when the same result is searched using powers of 10, as in the example:
+But the same problem does not occur when the same result is reached using powers of 10, example:
 ```javascript
 3 / 10 = 0.3
 ```
@@ -35,20 +35,20 @@ The use of the library is very simple:
 import { Calc } from 'calc-js';
 
 // 0.2 + 0.1
-Calc.sum(0.2, 0.1);
+const numericResult = new Calc(0.2).sum(0.1).finish();
 
 // 0.2 - 0.1
-Calc.minus(0.2, 0.1);
+const numericResult = new Calc(0.2).minus(0.1).finish();
 
 // 2199 / 100 * 5
-Calc.multiply(Calc.divide(2199, 100), 5);
+const numericResult = new Calc(2199).divide(100).multiply(5).finish();
 ```
 
 This is an example with TypeScript, but you can also use this in JavaScript application as you wish.
 
 ## Instalation
 ```sh
-npm install calc-js
+npm install calc-js --save
 ```
 
 ## Contributing

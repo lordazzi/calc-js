@@ -3,6 +3,7 @@ import { CalcConfig } from './config/calc-config';
 import { ConfigService } from './config/config.service';
 import { Operation } from './domain/operation.model';
 import { equationTypeGuard } from './equation.type-guard';
+import { CalcError } from './error/calc-error';
 import { ErrorService } from './error/error.service';
 import { NumberValidator } from './validator/number.validator';
 
@@ -23,6 +24,10 @@ export class Calc {
   //  vão além da proposta desta biblioteca
   static checkNumber(value: number, config?: CalcConfig): void {
     NumberValidator.getInstance().validateSingleNumber(value, config);
+  }
+
+  static onError(calle: (error: CalcError) => void): void {
+    ErrorService.getInstance().onError(calle);
   }
 
   constructor(
@@ -57,9 +62,9 @@ export class Calc {
     const baseNumber = this.baseNumber;
 
     if (equationTypeGuard(operations)) {
-      return this.calcBuild.calculate(this.customConfig, {
+      return this.calcBuild.calculate({
         baseNumber, operations
-      });
+      }, this.customConfig);
     }
 
     this.errorService.emitError(

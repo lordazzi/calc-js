@@ -19,14 +19,14 @@ export class NumberValidator {
 
   validate(
     value: number,
-    executedEquation: Equation,
+    executedEquation: Equation | null,
     completeEquation: Equation,
     calcConfig: CalcConfig
   ): string | null {
     const errorMessage = this.validateSingleNumber(value, calcConfig);
 
     if (errorMessage) {
-      return this.generateErrorMessage(executedEquation, completeEquation, errorMessage);
+      return this.generateErrorMessage(value, executedEquation, completeEquation, errorMessage);
     }
 
     return null;
@@ -36,34 +36,52 @@ export class NumberValidator {
     const config = ConfigService.getInstance().createConfigs(customConfig);
 
     if (config.throwNaN) {
-      return this.checkNaN(value);
+      const checkNaNMessage = this.checkNaN(value);
+      if (checkNaNMessage) {
+        return checkNaNMessage;
+      }
     }
 
     if (config.throwInfinite) {
-      return this.checkInfinite(value);
+      const checkInfiniteMessage = this.checkInfinite(value);
+      if (checkInfiniteMessage) {
+        return checkInfiniteMessage;
+      }
     }
 
     if (config.throwUnsafeNumber) {
-      return this.checkUnsafeNumber(value);
+      const checkUnsafeNumberMessage = this.checkUnsafeNumber(value);
+      if (checkUnsafeNumberMessage) {
+        return checkUnsafeNumberMessage;
+      }
     }
 
     return null;
   }
 
   private generateErrorMessage(
-    executedEquation: Equation,
+    value: number,
+    executedEquation: Equation | null,
     completeEquation: Equation,
     errorMessage: string
   ): string {
-    const executedEquationStr = equationStringify(executedEquation);
     const completeEquationStr = equationStringify(completeEquation);
 
-    return `Error on ${executedEquationStr} in equation ${completeEquationStr}, ${errorMessage}`;
+    if (executedEquation) {
+      if (executedEquation.operations.length === completeEquation.operations.length) {
+        return `Invalid result value in equation ${completeEquationStr}, ${errorMessage}`;
+      } else {
+        const executedEquationStr = equationStringify(executedEquation);
+        return `Invalid result value in ${executedEquationStr} in equation ${completeEquationStr}, ${errorMessage}`;
+      }
+    } else {
+      return `Invalid value ${value} in equation ${completeEquationStr}, ${errorMessage}`;
+    }
   }
 
   private checkNaN(value: number): string | null {
     if (isNaN(value)) {
-      return `the result is ${value}.`;
+      return `NaN was found`;
     }
 
     return null;
@@ -71,7 +89,7 @@ export class NumberValidator {
 
   private checkInfinite(value: number): string | null {
     if (!Number.isFinite(value)) {
-      return `the result is ${value}.`;
+      return `infinite value was found`;
     }
 
     return null;
@@ -81,7 +99,7 @@ export class NumberValidator {
     const isSafeInteger = !!String(value).split('.').find(str => !Number.isSafeInteger(Number(str)));
 
     if (isSafeInteger) {
-      return `the result is ${value} and it is not a secure number.`;
+      return `${value} is not a secure number`;
     }
 
     return null;

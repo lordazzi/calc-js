@@ -40,15 +40,9 @@ export class CalcBuild {
 
   private constructor() { }
 
-  calculate(config: CalcConfig, equation: Equation): number {
-    const executedEquation: {
-      baseNumber: number;
-      operations: Operation[];
-    } = {
-      baseNumber: equation.baseNumber,
-      operations: []
-    };
-
+  calculate(equation: Equation, config: CalcConfig): number {
+    this.validateEquation(equation, config);
+    const executedEquation = this.createExecutedEquation(equation);
     const equationCopy: Operation[] = ([] as Operation[]).concat(equation.operations);
     let operation: Operation | undefined;
     let finalResult = equation.baseNumber;
@@ -56,15 +50,39 @@ export class CalcBuild {
     while (operation = equationCopy.shift()) {
       finalResult = CalcBuild.calcMap[operation.type](finalResult, operation.value);
       executedEquation.operations.push(operation);
-      const errorMessage = this.numberValidator.validate(
-        finalResult, executedEquation as Equation, equation, config
-      );
-
-      if (errorMessage) {
-        this.errorService.emitError(config, errorMessage);
-      }
+      this.validate(finalResult, executedEquation as Equation, equation, config);
     }
 
     return finalResult;
+  }
+
+  private createExecutedEquation(equation: Equation): {
+    baseNumber: number;
+    operations: Operation[];
+  } {
+    return {
+      baseNumber: equation.baseNumber,
+      operations: []
+    };
+  }
+
+  private validate(
+    value: number, executedEquation: Equation | null, equation: Equation, config: CalcConfig
+  ): void {
+    const errorMessage = this.numberValidator.validate(
+      value, executedEquation, equation, config
+    );
+
+    if (errorMessage) {
+      this.errorService.emitError(config, errorMessage);
+    }
+  }
+
+  private validateEquation(equation: Equation, config: CalcConfig): void {
+    this.validate(equation.baseNumber, null, equation, config);
+
+    equation.operations.forEach(operation =>
+      this.validate(operation.value, null, equation, config)
+    );
   }
 }

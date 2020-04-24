@@ -170,7 +170,27 @@ describe('Calc', () => {
     expect(new Calc(593.33).divide(10).finish()).toBe(59.333);
   });
 
-  xit('Testando soma letras', () => {
+  it('Testando soma números invalidos', () => {
     expect(() => new Calc(1).sum(NaN).finish()).toThrow();
+  });
+
+  it('Testando soma com valores infinitos', () => {
+    expect(() => new Calc(1).sum(Infinity).finish()).toThrow();
+  });
+
+  it('Testando soma com valores infinitos', () => {
+    expect(() => new Calc(1).sum(-Infinity).finish()).toThrow();
+  });
+
+  it('Testando cálculo com divisão por zero', () => {
+    expect(() => new Calc(10).sum(10).divide(0).minus(1).finish()).toThrow();
+  });
+
+  it('Testando cálculo com números gigantes', () => {
+    expect(() => new Calc(1232132131).multiply(1232132131).finish()).toThrow();
+  });
+
+  it('Testando cálculo com números decimais gigantes', () => {
+    expect(() => new Calc(0.00000000001).sum(0.100000000001).finish()).toThrow();
   });
 });
