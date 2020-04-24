@@ -4,6 +4,11 @@
       true,
       7
     ],
+    "no-magic-numbers": [
+      true,
+      0,
+      1
+    ],
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
@@ -64,7 +69,7 @@
       "ignore-params"
     ],
     "no-namespace": true,
-    "no-misused-new": true,
+    "no-misused-new": false,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
@@ -72,7 +77,6 @@
     "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
     "no-unused-expression": true,
-    "no-use-before-declare": true,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
     "one-line": [

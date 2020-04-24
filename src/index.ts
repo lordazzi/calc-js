@@ -1,116 +1,111 @@
-export class Calculator {
+import { CalcBuild } from './calculate/calc-build';
+import { CalcConfig } from './config/calc-config';
+import { Operation } from './domain/operation.model';
+import { equationTypeGuard } from './equation.type-guard';
+import { CalcError } from './error/calc-error';
+import { NumberValidator } from './validator/number.validator';
 
-  sum(n1: number, n2: number): number {
-    const errorMessage = `${n1}+${n2}`;
-    this.isNaN(n1, errorMessage);
-    this.isNaN(n2, errorMessage);
+export class Calc {
 
-    if (n1 % 1 === 0 && n2 % 1 === 0) {
-      return n1 + n2;
+  private static defaultConfig: CalcConfig = {
+    thrownStrategy: 'thrown',
+    throwNaN: true,
+    throwInfinite: true,
+    throwUnsafeNumber: true
+  };
+
+  private readonly calcBuild = CalcBuild.getInstance();
+  private readonly numberValidator = NumberValidator.getInstance();
+
+  private operations: Operation[] = [];
+
+  static configure(config: CalcConfig): void {
+    if (config.thrownStrategy !== undefined) {
+      this.defaultConfig.thrownStrategy = config.thrownStrategy;
     }
 
-    const n1Length = String(n1).replace(/\d+\.?/, '').length,
-      n2Length = String(n2).replace(/\d+\.?/, '').length;
-    let length = n1Length > n2Length ? n1Length : n2Length;
-
-    let baseDecimal: string | number = '1';
-    while (length--) {
-      baseDecimal = `${baseDecimal}0`;
+    if (config.throwNaN !== undefined) {
+      this.defaultConfig.throwNaN = config.throwNaN;
     }
-    baseDecimal = Number(baseDecimal);
 
-    n1 = Math.round(n1 * baseDecimal);
-    n2 = Math.round(n2 * baseDecimal);
+    if (config.throwInfinite !== undefined) {
+      this.defaultConfig.throwInfinite = config.throwInfinite;
+    }
 
-    return (n1 + n2) / baseDecimal;
+    if (config.throwUnsafeNumber !== undefined) {
+      this.defaultConfig.throwUnsafeNumber = config.throwUnsafeNumber;
+    }
   }
 
-  minus(n1: number, n2: number): number {
-    const errorMessage = `${n1}-${n2}`;
-    this.isNaN(n1, errorMessage);
-    this.isNaN(n2, errorMessage);
-
-    if (n1 % 1 === 0 && n2 % 1 === 0) {
-      return n1 - n2;
-    }
-
-    const n1Length = String(n1).replace(/\d+\.?/, '').length,
-      n2Length = String(n2).replace(/\d+\.?/, '').length;
-    let length = n1Length > n2Length ? n1Length : n2Length;
-
-    let baseDecimal: string | number = '1';
-    while (length--) {
-      baseDecimal = `${baseDecimal}0`;
-    }
-    baseDecimal = Number(baseDecimal);
-
-    n1 = Math.round(n1 * baseDecimal);
-    n2 = Math.round(n2 * baseDecimal);
-
-    return (n1 - n2) / baseDecimal;
+  static checkNumber(numeric: number): void {
+    //  it will throw if this isn't a valid number
+    //  sinalizar que este método só serve para validar se o número é
+    //  javascripticamente usável e não validar se este se aplica específicamente
+    //  a uma necessidade de negócio, como um valor precisamente inteiro, um valor
+    //  decimal de até duas casas, se negativo ou não negativo, estas validações
+    //  vão além da proposta desta biblioteca
   }
 
-  divide(n1: number, n2: number): number {
-    const errorMessage = `${n1}/${n2}`;
-    this.isNaN(n1, errorMessage);
-    this.isNaN(n2, errorMessage);
-
-    let length = String(n1 / n2).replace(/\d+\.?/, '').length;
-    let baseDecimal: string | number = '1';
-    while (length--) {
-      baseDecimal = `${baseDecimal}0`;
-    }
-    baseDecimal = Number(baseDecimal);
-
-    n1 = Math.round(n1 * baseDecimal);
-
-    return (n1 / n2) / baseDecimal;
+  constructor(
+    private readonly baseNumber: number,
+    private customConfig: CalcConfig = Calc.defaultConfig
+  ) {
+    this.customConfig = this.mergeConfigs(this.customConfig, Calc.defaultConfig);
   }
 
-  multiply(n1: number, n2: number): number {
-    const errorMessage = `${n1}*${n2}`;
-    this.isNaN(n1, errorMessage);
-    this.isNaN(n2, errorMessage);
-
-    if (n1 % 1 === 0 && n2 % 1 === 0) {
-      return n1 * n2;
+  private mergeConfigs(customConfig: CalcConfig, defaultConfig: CalcConfig): CalcConfig {
+    if (defaultConfig.thrownStrategy !== undefined) {
+      customConfig.thrownStrategy = defaultConfig.thrownStrategy;
     }
 
-    let n1Length: number, n2Length: number,
-      n1BaseDecimal: string | number = 1,
-      n2BaseDecimal: string | number = 1;
-
-    if (n1 % 1 !== 0) {
-      n1Length = String(n1).replace(/\d+\.?/, '').length;
-      while (n1Length--) {
-        n1BaseDecimal = `${n1BaseDecimal}0`;
-      }
-      n1BaseDecimal = Number(n1BaseDecimal);
+    if (defaultConfig.throwNaN !== undefined) {
+      customConfig.throwNaN = defaultConfig.throwNaN;
     }
 
-    if (n2 % 1 !== 0) {
-      n2Length = String(n2).replace(/\d+\.?/, '').length;
-      while (n2Length--) {
-        n2BaseDecimal = `${n2BaseDecimal}0`;
-      }
-      n2BaseDecimal = Number(n2BaseDecimal);
+    if (defaultConfig.throwInfinite !== undefined) {
+      customConfig.throwInfinite = defaultConfig.throwInfinite;
     }
 
-    n1 = Math.round(n1 * n1BaseDecimal);
-    n2 = Math.round(n2 * n2BaseDecimal);
+    if (defaultConfig.throwUnsafeNumber !== undefined) {
+      customConfig.throwUnsafeNumber = defaultConfig.throwUnsafeNumber;
+    }
 
-    return (n1 * n2) / (n1BaseDecimal * n2BaseDecimal);
+    return customConfig;
   }
 
-  private isNaN(number: unknown, errorMessage: string): number is number {
-    if (isNaN(<number>number)) {
-      throw new Error(`NaN (not a number) found in calc operation: "${errorMessage}"`);
+  sum(value: number): Calc {
+    this.operations.push({ type: '+', value });
+    return this;
+  }
+
+  minus(value: number): Calc {
+    this.operations.push({ type: '-', value });
+    return this;
+  }
+
+  divide(value: number): Calc {
+    this.operations.push({ type: '/', value });
+    return this;
+  }
+
+  multiply(value: number): Calc {
+    this.operations.push({ type: '*', value });
+    return this;
+  }
+
+  calculate(): number {
+    const operations = this.operations;
+    const baseNumber = this.baseNumber;
+
+    if (equationTypeGuard(operations)) {
+      return this.calcBuild.calculate({
+        baseNumber, operations
+      });
     }
 
-    return true;
+    throw new CalcError(`More then one number is needed to create an equation, only the number ${this.baseNumber} was given`);
   }
 }
 
-const Calc = new Calculator();
-export { Calc };
-
+//  TODO: deixar claro  que biblioteca não remove casas decimais, ela apenas impede que os números
+//  resultantes sejam representados de forma incorreta
