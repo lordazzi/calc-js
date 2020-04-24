@@ -36,6 +36,7 @@
   "homepage": "https://github.com/lordazzi/calc-js#readme",
   "devDependencies": {
     "@types/jasmine": "3.5.10",
+    "@types/node": "^13.13.2",
     "jasmine": "3.5.0",
     "karma": "4.4.1",
     "karma-chrome-launcher": "3.1.0",
@@ -44,7 +45,6 @@
     "karma-jasmine-html-reporter": "1.5.3",
     "karma-typescript": "5.0.2",
     "tslint": "5.18.0",
-    "typescript": "3.8.3",
-    "typescript-closure-compiler": "1.8.11"
+    "typescript": "3.8.3"
   }
 }

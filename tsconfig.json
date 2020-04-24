@@ -14,8 +14,8 @@
       "es6",
       "dom"
     ],
-    "module": "umd",
-    "moduleResolution": "classic",
+    "module": "none",
+    "outFile": "build/build.js",
     "sourceMap": true,
     "target": "es5",
     "typeRoots": [
