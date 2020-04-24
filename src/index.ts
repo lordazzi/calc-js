@@ -1,41 +1,18 @@
 import { CalcBuild } from './calculate/calc-build';
 import { CalcConfig } from './config/calc-config';
+import { ConfigService } from './config/config.service';
 import { Operation } from './domain/operation.model';
 import { equationTypeGuard } from './equation.type-guard';
-import { CalcError } from './error/calc-error';
-import { NumberValidator } from './validator/number.validator';
+import { ErrorService } from './error/error.service';
 
 export class Calc {
 
-  private static defaultConfig: CalcConfig = {
-    thrownStrategy: 'thrown',
-    throwNaN: true,
-    throwInfinite: true,
-    throwUnsafeNumber: true
-  };
-
   private readonly calcBuild = CalcBuild.getInstance();
-  private readonly numberValidator = NumberValidator.getInstance();
+  private readonly configService = ConfigService.getInstance();
+  private readonly errorService = ErrorService.getInstance();
 
   private operations: Operation[] = [];
-
-  static configure(config: CalcConfig): void {
-    if (config.thrownStrategy !== undefined) {
-      this.defaultConfig.thrownStrategy = config.thrownStrategy;
-    }
-
-    if (config.throwNaN !== undefined) {
-      this.defaultConfig.throwNaN = config.throwNaN;
-    }
-
-    if (config.throwInfinite !== undefined) {
-      this.defaultConfig.throwInfinite = config.throwInfinite;
-    }
-
-    if (config.throwUnsafeNumber !== undefined) {
-      this.defaultConfig.throwUnsafeNumber = config.throwUnsafeNumber;
-    }
-  }
+  private customConfig = ConfigService.defaultConfig;
 
   static checkNumber(numeric: number): void {
     //  it will throw if this isn't a valid number
@@ -48,29 +25,9 @@ export class Calc {
 
   constructor(
     private readonly baseNumber: number,
-    private customConfig: CalcConfig = Calc.defaultConfig
+    customConfig?: CalcConfig
   ) {
-    this.customConfig = this.mergeConfigs(this.customConfig, Calc.defaultConfig);
-  }
-
-  private mergeConfigs(customConfig: CalcConfig, defaultConfig: CalcConfig): CalcConfig {
-    if (defaultConfig.thrownStrategy !== undefined) {
-      customConfig.thrownStrategy = defaultConfig.thrownStrategy;
-    }
-
-    if (defaultConfig.throwNaN !== undefined) {
-      customConfig.throwNaN = defaultConfig.throwNaN;
-    }
-
-    if (defaultConfig.throwInfinite !== undefined) {
-      customConfig.throwInfinite = defaultConfig.throwInfinite;
-    }
-
-    if (defaultConfig.throwUnsafeNumber !== undefined) {
-      customConfig.throwUnsafeNumber = defaultConfig.throwUnsafeNumber;
-    }
-
-    return customConfig;
+    this.customConfig = this.configService.createConfigs(customConfig);
   }
 
   sum(value: number): Calc {
@@ -98,12 +55,16 @@ export class Calc {
     const baseNumber = this.baseNumber;
 
     if (equationTypeGuard(operations)) {
-      return this.calcBuild.calculate({
+      return this.calcBuild.calculate(this.customConfig, {
         baseNumber, operations
       });
     }
 
-    throw new CalcError(`More then one number is needed to create an equation, only the number ${this.baseNumber} was given`);
+    this.errorService.emitError(
+      this.customConfig, `More then one number is needed to create an equation, only the number ${this.baseNumber} was given`
+    );
+
+    return baseNumber;
   }
 }
 

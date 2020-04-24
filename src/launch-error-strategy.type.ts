@@ -1,1 +1,1 @@
-export type LauchErrorStrategy = 'emit-event' | 'thrown' | 'console' | 'ignore';
+export type LauchErrorStrategy = 'emit-event' | 'thrown' | 'console';

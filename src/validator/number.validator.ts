@@ -53,7 +53,7 @@ export class NumberValidator {
     return `Error on ${executedEquationStr} in equation ${completeEquationStr}, ${errorMessage}`;
   }
 
-  checkNaN(value: number): string | null {
+  private checkNaN(value: number): string | null {
     if (isNaN(value)) {
       return `the result is ${value}.`;
     }
@@ -61,7 +61,7 @@ export class NumberValidator {
     return null;
   }
 
-  checkInfinite(value: number): string | null {
+  private checkInfinite(value: number): string | null {
     if (!Number.isFinite(value)) {
       return `the result is ${value}.`;
     }
@@ -69,7 +69,7 @@ export class NumberValidator {
     return null;
   }
 
-  checkUnsafeNumber(value: number): string | null {
+  private checkUnsafeNumber(value: number): string | null {
     const isSafeInteger = !!String(value).split('.').find(str => !Number.isSafeInteger(Number(str)));
 
     if (isSafeInteger) {
