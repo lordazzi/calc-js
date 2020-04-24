@@ -4,6 +4,7 @@ import { ConfigService } from './config/config.service';
 import { Operation } from './domain/operation.model';
 import { equationTypeGuard } from './equation.type-guard';
 import { ErrorService } from './error/error.service';
+import { NumberValidator } from './validator/number.validator';
 
 export class Calc {
 
@@ -14,13 +15,14 @@ export class Calc {
   private operations: Operation[] = [];
   private customConfig = ConfigService.defaultConfig;
 
-  static checkNumber(numeric: number): void {
-    //  it will throw if this isn't a valid number
-    //  sinalizar que este método só serve para validar se o número é
-    //  javascripticamente usável e não validar se este se aplica específicamente
-    //  a uma necessidade de negócio, como um valor precisamente inteiro, um valor
-    //  decimal de até duas casas, se negativo ou não negativo, estas validações
-    //  vão além da proposta desta biblioteca
+  //  it will throw if this isn't a valid number
+  //  sinalizar que este método só serve para validar se o número é
+  //  javascripticamente usável e não validar se este se aplica específicamente
+  //  a uma necessidade de negócio, como um valor precisamente inteiro, um valor
+  //  decimal de até duas casas, se negativo ou não negativo, estas validações
+  //  vão além da proposta desta biblioteca
+  static checkNumber(value: number, config?: CalcConfig): void {
+    NumberValidator.getInstance().validateSingleNumber(value, config);
   }
 
   constructor(

@@ -1,5 +1,6 @@
 import { CalcConfig } from '../config/calc-config';
 import { Equation } from '../domain/equation.model';
+import { ConfigService } from './../config/config.service';
 import { equationStringify } from './equation.stringify';
 
 export class NumberValidator {
@@ -22,21 +23,28 @@ export class NumberValidator {
     completeEquation: Equation,
     calcConfig: CalcConfig
   ): string | null {
-    let errorMessage: string | null = null;
-    if (calcConfig.throwNaN) {
-      errorMessage = this.checkNaN(value);
-    }
-
-    if (!errorMessage && calcConfig.throwInfinite) {
-      errorMessage = this.checkInfinite(value);
-    }
-
-    if (!errorMessage && calcConfig.throwUnsafeNumber) {
-      errorMessage = this.checkUnsafeNumber(value);
-    }
+    const errorMessage = this.validateSingleNumber(value, calcConfig);
 
     if (errorMessage) {
       return this.generateErrorMessage(executedEquation, completeEquation, errorMessage);
+    }
+
+    return null;
+  }
+
+  validateSingleNumber(value: number, customConfig?: CalcConfig): string | null {
+    const config = ConfigService.getInstance().createConfigs(customConfig);
+
+    if (config.throwNaN) {
+      return this.checkNaN(value);
+    }
+
+    if (config.throwInfinite) {
+      return this.checkInfinite(value);
+    }
+
+    if (config.throwUnsafeNumber) {
+      return this.checkUnsafeNumber(value);
     }
 
     return null;
