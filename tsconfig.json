@@ -2,9 +2,11 @@
   "compileOnSave": false,
   "compilerOptions": {
     "declaration": true,
+    "outDir": "build",
     "strict": true,
     "skipLibCheck": true,
     "noImplicitThis": false,
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
@@ -12,7 +14,7 @@
       "es6",
       "dom"
     ],
-    "module": "commonjs",
+    "module": "umd",
     "moduleResolution": "classic",
     "sourceMap": true,
     "target": "es5",

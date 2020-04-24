@@ -158,7 +158,7 @@ describe('Calc', () => {
     expect(new Calc(0.56).multiply(0.56).finish()).toBe(0.3136);
   });
 
-  it('Testando cálculo com multiplicação com dois decimais (100 * 0.56)', () => {
+  it('Testando cálculo com multiplicação com um decimal (100 * 0.56)', () => {
     expect(new Calc(100).multiply(0.56).finish()).toBe(56);
   });
 

@@ -10,7 +10,7 @@ Handle JavaScript operations, avoiding the native problems of the language.
 
 ## The problem
 The problem of representing decimal numbers encoded in IEEE 754 binary format is a problem that JavaScript suffers.
-The bug consists of the lack of ability for the format to represent some numerical values in the binary format, you can read an article talking about it here:  [Floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic#Floating-point_numbers).
+The bug consists of the lack of ability for the format to represent some numerical values in the binary format, you can read an article talking about it here:  [Double precision floating-point](https://en.wikipedia.org/wiki/Double-precision_floating-point_format).
 
 This is a well-known problem, in Java they have developed a class called BigDecimal to solve this.
 
@@ -74,7 +74,7 @@ Some search tips:
 ### 4. Create a Pull Request
 Follow the steps:
 
- * Create a [fork](https://guides.github.com/activities/forking/) from our repository, install [node](https://nodejs.org/), and run `npm install` in the application folder;
+ * Create a [fork](https://guides.github.com/activities/forking/) from our repository ((click here to fork)[https://github.com/lordazzi/calc-js/fork]), install [node](https://nodejs.org/), and run `npm install` in the application folder;
  * Create a branch in your forked repository, then code the feature or fix the bug;
  * Run `npm run lint`, `npm run test` and `npm run build` in the repository;
  * Create a Pull Request from your repository to this one, with the issue in the body and some information you think could be usefull to the reviewer (print or a [gif of it working](https://www.screentogif.com/) will be appreciated);

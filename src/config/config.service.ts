@@ -5,7 +5,7 @@ export class ConfigService {
   private static instance: ConfigService | null = null;
 
   static defaultConfig: CalcConfig = {
-    thrownStrategy: 'thrown',
+    thrownStrategy: 'emit-event',
     throwNaN: true,
     throwInfinite: true,
     throwUnsafeNumber: true

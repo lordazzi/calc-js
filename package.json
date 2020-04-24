@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start",
     "lint": "tslint --project tsconfig.app.json",
-    "build": "tsc --project tsconfig.app.json --out build/calc.amd.js --module amd;"
+    "build": "tsc --project tsconfig.app.json"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "karma-jasmine-html-reporter": "1.5.3",
     "karma-typescript": "5.0.2",
     "tslint": "5.18.0",
-    "typescript": "3.8.3"
+    "typescript": "3.8.3",
+    "typescript-closure-compiler": "1.8.11"
   }
 }
