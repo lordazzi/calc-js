@@ -35,25 +35,15 @@
   },
   "homepage": "https://github.com/lordazzi/calc-js#readme",
   "devDependencies": {
-    "@types/jasmine": "3.5.0",
-    "coveralls": "3.0.9",
-    "es6-module-loader": "0.17.11",
-    "gulp": "3.9.1",
-    "gulp-clean": "0.4.0",
-    "gulp-concat": "2.6.1",
-    "gulp-minify": "3.1.0",
-    "gulp-sourcemaps": "2.6.4",
-    "gulp-tar": "2.1.0",
-    "gulp-typescript": "5.0.0-alpha.3",
+    "@types/jasmine": "3.5.10",
     "jasmine": "3.5.0",
-    "jasmine-core": "3.5.0",
-    "karma": "4.0.0",
+    "karma": "4.4.1",
     "karma-chrome-launcher": "3.1.0",
     "karma-coverage-istanbul-reporter": "2.1.1",
-    "karma-jasmine": "2.0.1",
-    "karma-typescript": "4.1.1",
-    "progress": "2.0.3",
-    "tslint": "5.20.1",
-    "typescript": "3.7.3"
+    "karma-jasmine": "3.1.1",
+    "karma-jasmine-html-reporter": "1.5.3",
+    "karma-typescript": "5.0.2",
+    "tslint": "5.18.0",
+    "typescript": "3.8.3"
   }
 }

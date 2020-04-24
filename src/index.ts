@@ -52,7 +52,7 @@ export class Calc {
     return this;
   }
 
-  calculate(): number {
+  finish(): number {
     const operations = this.operations;
     const baseNumber = this.baseNumber;
 
