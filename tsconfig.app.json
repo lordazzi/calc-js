@@ -1,5 +1,10 @@
 {
   "extends": "./tsconfig.json",
+  "include": [
+    "README.md",
+    "package.json",
+    "LICENSE"
+  ],
   "exclude": [
     "sandbox.ts",
     "**/*.spec.ts"

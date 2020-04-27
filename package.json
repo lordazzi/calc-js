@@ -6,7 +6,7 @@
   "scripts": {
     "test": "karma start",
     "lint": "tslint --project tsconfig.app.json",
-    "build": "tsc --project tsconfig.app.json"
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,12 @@
   "devDependencies": {
     "@types/jasmine": "3.5.10",
     "@types/node": "13.13.2",
+    "gulp": "3.9.1",
+    "gulp-clean": "0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "3.1.0",
+    "gulp-sourcemaps": "2.6.5",
+    "gulp-typescript": "6.0.0-alpha.1",
     "jasmine": "3.5.0",
     "karma": "4.4.1",
     "karma-chrome-launcher": "3.1.0",
