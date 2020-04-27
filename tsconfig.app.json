@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "module": "amd",
+    "outFile": "build/index.js"
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "./sandbox.ts"
+  ]
+}

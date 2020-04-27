@@ -1,7 +1,4 @@
-build/src*
 karma.conf.js
-tslint.json
-tsconfig.json
-_config.yml
-systemjs.config.js
 debug.log
+src
+sandbox.ts
