@@ -4,10 +4,11 @@ if (define.clazzes) {
     window.CalcError = define.clazzes.CalcError;
   }
 
-  if (typeof module !== 'undefined' && 'export' in module) {
-    module.exports = {
-      Calc: define.clazzes.Calc,
-      CalcError: define.clazzes.CalcError
-    };
+  if (typeof module !== 'undefined' && 'exports' in module) {
+    module.exports = define.clazzes;
+  }
+
+  if (typeof exports !== 'undefined') {
+    exports = define.clazzes;
   }
 }
