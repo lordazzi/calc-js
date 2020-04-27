@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "declaration": true,
+    "sourceMap": true,
     "outDir": "build",
     "strict": true,
     "skipLibCheck": true,
@@ -14,9 +15,8 @@
       "es6",
       "dom"
     ],
-    "module": "none",
+    "module": "amd",
     "outFile": "build/index.js",
-    "sourceMap": true,
     "target": "es5",
     "typeRoots": [
       "node_modules/@types"

@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const clean = require('gulp-clean');
 const concat = require('gulp-concat');
 const minify = require('gulp-minify');
 const ts = require('gulp-typescript');
@@ -8,13 +7,14 @@ const tsLibraryBuild = ts.createProject('./tsconfig.app.json');
 
 // TRANSPILE AS TYPESCRIPT LIBRARY
 gulp.task('transpile-typescript-lib', () => tsLibraryBuild.src()
-  .pipe(sourcemaps.init())
   .pipe(tsLibraryBuild())
   .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest('./building'))
+  .pipe(gulp.dest('.'))
 );
 
-gulp.task('javascript-minify', () => gulp.src(['./build-head.js', 'building/index.js'])
+gulp.task('javascript-minify', ['transpile-typescript-lib'], () => gulp.src([
+  './build-head.js', './build/index.js', './build-footer.js'
+])
   .pipe(concat(`calc.js`))
   .pipe(minify({
     ext: {
@@ -22,13 +22,9 @@ gulp.task('javascript-minify', () => gulp.src(['./build-head.js', 'building/inde
       min: '.min.js'
     }
   }))
-  .pipe(gulp.dest('.'))
+  .pipe(gulp.dest('./build'))
 );
 
-gulp.task('clean', [
-  'javascript-minify', 'transpile-typescript-lib'
-], () => gulp.src([
-  'package', 'minified', 'building'
-]).pipe(clean()));
-
-gulp.task('build', ['clean']);
+gulp.task('build', ['javascript-minify'], () => gulp.src([
+  'package.json', 'package-lock.json', '**.md', 'docs', 'tsconfig.json', 'LICENSE'
+]).pipe(gulp.dest('./build')));
