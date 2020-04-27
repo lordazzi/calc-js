@@ -25,6 +25,10 @@ gulp.task('javascript-minify', ['transpile-typescript-lib'], () => gulp.src([
   .pipe(gulp.dest('./build'))
 );
 
-gulp.task('build', ['javascript-minify'], () => gulp.src([
-  'package.json', 'package-lock.json', '**.md', 'docs', 'tsconfig.json', 'LICENSE'
+gulp.task('documentation', ['javascript-minify'], () => gulp.src([
+  'package.json', 'package-lock.json', '**.md', 'tsconfig.json', 'LICENSE'
 ]).pipe(gulp.dest('./build')));
+
+gulp.task('build', ['documentation'], () => gulp.src([
+  'docs/**'
+]).pipe(gulp.dest('./build/docs')));
