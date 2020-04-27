@@ -56,8 +56,9 @@ There are some EcmaScript errors that are not thrown by the language and it cann
 these erros are: zero division and infinity numbers `0 / 10 = Infinity`, non numberic math
 operations `'Some text' * 10 = NaN` and insecure numbers (too large number that language cannot
 represent, but still allow you to use then).
+
 The library will generate an error object when these situations are found, this is the CalcError
-and it extends native JavaScript Error.
+and it extends native JavaScript Error. Use this will give you a stack trace to found the problem cause.
 
 ![The CalcError](docs/error-object.png)
 
