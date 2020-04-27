@@ -33,6 +33,21 @@ But the same problem does not occur when the same result is reached using powers
 npm install calc-js --save
 ```
 
+```javascript
+//  node
+var Calc = require('calc-js').Calc;
+```
+
+```html
+<!-- browser -->
+<script src="calc-js/calc.latest.min.js"></script>
+```
+
+```typescript
+//  typescript
+import { Calc } from 'calc-js';
+```
+
 ## How to use
 The use of the library is very simple:
 
