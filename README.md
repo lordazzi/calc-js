@@ -64,7 +64,7 @@ and it extends native JavaScript Error. Use this will give you a stack trace to 
 
 You can choose four ways to deal with errors:
 
-# 1. Ignore then
+### 1. Ignore then
 Ignore all identified errors
 ```typescript
 Calc.configure({
@@ -74,7 +74,7 @@ Calc.configure({
 });
 ```
 
-# 2. Listen an event
+### 2. Listen an event
 Register a function on library to listen all thrown errors. This will cover
 all Calc in application so, is a centralized treatment
 
@@ -91,7 +91,7 @@ Calc.onError(function(error) {
 Note: if you choose emit-event and don't associate any function to listen the errors,
 the application will thrown then
 
-# 3. Throw
+### 3. Throw
 This is a non centralized solution. You'll use this when the calc is critical
 and should not generate an invalid result.
 
@@ -107,7 +107,7 @@ try {
 }
 ```
 
-# 4. Show in console
+### 4. Show in console
 This will write the error in the browser console
 
 ```typescript
