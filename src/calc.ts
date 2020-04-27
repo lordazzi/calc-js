@@ -17,11 +17,6 @@ export class Calc {
   private customConfig = ConfigService.defaultConfig;
 
   //  it will throw if this isn't a valid number
-  //  sinalizar que este método só serve para validar se o número é
-  //  javascripticamente usável e não validar se este se aplica específicamente
-  //  a uma necessidade de negócio, como um valor precisamente inteiro, um valor
-  //  decimal de até duas casas, se negativo ou não negativo, estas validações
-  //  vão além da proposta desta biblioteca
   static checkNumber(value: number, config?: CalcConfig): void {
     NumberValidator.getInstance().validateSingleNumber(value, config);
   }
@@ -30,20 +25,24 @@ export class Calc {
     ErrorService.getInstance().onError(calle);
   }
 
-  static sum(x: number, y: number): number {
-    return new Calc(x).sum(y).finish();
+  static configure(config: CalcConfig): void {
+    ConfigService.getInstance().createConfigs(config);
   }
 
-  static minus(x: number, y: number): number {
-    return new Calc(x).minus(y).finish();
+  static sum(x: number, y: number, config?: CalcConfig): number {
+    return new Calc(x, config).sum(y).finish();
   }
 
-  static divide(x: number, y: number): number {
-    return new Calc(x).divide(y).finish();
+  static minus(x: number, y: number, config?: CalcConfig): number {
+    return new Calc(x, config).minus(y).finish();
   }
 
-  static multiply(x: number, y: number): number {
-    return new Calc(x).multiply(y).finish();
+  static divide(x: number, y: number, config?: CalcConfig): number {
+    return new Calc(x, config).divide(y).finish();
+  }
+
+  static multiply(x: number, y: number, config?: CalcConfig): number {
+    return new Calc(x, config).multiply(y).finish();
   }
 
   constructor(

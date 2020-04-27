@@ -28,6 +28,11 @@ But the same problem does not occur when the same result is reached using powers
 3 / 10 = 0.3
 ```
 
+## Instalation
+```sh
+npm install calc-js --save
+```
+
 ## How to use
 The use of the library is very simple:
 
@@ -46,9 +51,102 @@ const numericResult = new Calc(2199).divide(100).multiply(5).finish();
 
 This is an example with TypeScript, but you can also use this in JavaScript application as you wish.
 
-## Instalation
-```sh
-npm install calc-js --save
+## Error Handling
+There are some EcmaScript errors that are not thrown by the language and it cannot be treated,
+these erros are: zero division and infinity numbers `0 / 10 = Infinity`, non numberic math
+operations `'Some text' * 10 = NaN` and insecure numbers (too large number that language cannot
+represent, but still allow you to use then).
+The library will generate an error object when these situations are found, this is the CalcError
+and it extends native JavaScript Error.
+
+![The CalcError](docs/error-object.png)
+
+You can choose four ways to deal with errors:
+
+# 1. Ignore then
+Ignore all identified errors
+```typescript
+Calc.configure({
+  throwNaN: false,
+  throwInfinite: false,
+  throwUnsafeNumber: false
+});
+```
+
+# 2. Listen an event
+Register a function on library to listen all thrown errors. This will cover
+all Calc in application so, is a centralized treatment
+
+```typescript
+Calc.configure({
+  // you don't need really configure this, 'emit-event' is the default value
+  thrownStrategy: 'emit-event'
+});
+
+Calc.onError(function(error) {
+  //  do something
+});
+```
+Note: if you choose emit-event and don't associate any function to listen the errors,
+the application will thrown then
+
+# 3. Throw
+This is a non centralized solution. You'll use this when the calc is critical
+and should not generate an invalid result.
+
+```typescript
+Calc.configure({
+  thrownStrategy: 'thrown'
+});
+
+try {
+  const result = new Calc(10).sum(11).finish();
+} catch (e) {
+  //  do something
+}
+```
+
+# 4. Show in console
+This will write the error in the browser console
+
+```typescript
+Calc.configure({
+  thrownStrategy: 'console'
+});
+```
+
+## Config
+All library settings are related to how errors will be thrown. The following exemple show
+how to change these configs and show the default values set in the library:
+
+```typescript
+Calc.configure({
+  thrownStrategy: 'emit-event',
+  throwNaN: true,
+  throwInfinite: true,
+  throwUnsafeNumber: true
+});
+```
+
+This configure function will override the default values to each Calc execution
+in your application, but these default values can be overriden in each execution
+(configure localy will never required, but optional):
+
+```typescript
+const localConfig = { thrownStrategy: 'thrown' };
+new Calc(10, localConfig).divide(0).finish();
+```
+
+```typescript
+const localConfig = { thrownStrategy: 'thrown' };
+//  the old way to calc in the library
+Calc.divide(10, 0, localConfig);
+```
+
+```typescript
+const localConfig = { thrownStrategy: 'thrown' };
+//  it will throw if this isn't a valid number
+Calc.checkNumber(Infinity, localConfig);
 ```
 
 ## Contributing
