@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node"
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "./sandbox.ts"
+  ]
+}
