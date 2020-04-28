@@ -17,18 +17,19 @@ try {
   throw e;
 }
 
-// TRANSPILE AS TYPESCRIPT LIBRARY
+// TRANSPILE TO A SINGLE FILE
 gulp.task('javascript-build', () => javascriptLibraryBuild.src()
   .pipe(javascriptLibraryBuild())
   .pipe(gulp.dest('.'))
 );
 
+//  TRANSPILE MULTIPLE FILES
 gulp.task('typescript-build', () => typescriptLibraryBuild.src()
   .pipe(typescriptLibraryBuild())
   .pipe(gulp.dest('./build'))
 );
 
-
+//  MINIFY JAVASCRIPT SINGLE FILE
 gulp.task('javascript-minify', ['javascript-build'], () => gulp.src([
   './build-head.js', './build/calc.latest.js', './build-footer.js'
 ])
@@ -42,16 +43,18 @@ gulp.task('javascript-minify', ['javascript-build'], () => gulp.src([
   .pipe(gulp.dest('./build'))
 );
 
-gulp.task('javascript-rename', ['javascript-minify'], () => gulp.src([
+//  RENAME MINIFIED JAVASCRIPT FILE
+gulp.task('javascript-minified-rename', ['javascript-minify'], () => gulp.src([
   'build/calc.latest.min.js'
 ])
   .pipe(rename(`calc.${version}.min.js`))
   .pipe(gulp.dest('./build')));
 
-gulp.task('documentation', () => gulp.src([
+//  COPY DOCUMENTATION
+gulp.task('copy-documentation', () => gulp.src([
   'package.json', 'package-lock.json', '**.md', 'tsconfig.json', 'LICENSE'
 ]).pipe(gulp.dest('./build')));
 
-gulp.task('build', ['javascript-rename', 'documentation', 'typescript-build'], () => gulp.src([
+gulp.task('build', ['javascript-minified-rename', 'copy-documentation', 'typescript-build'], () => gulp.src([
   'docs/**'
 ]).pipe(gulp.dest('./build/docs')));

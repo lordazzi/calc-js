@@ -15,8 +15,8 @@
       "dom"
     ],
     "module": "commonjs",
-    "moduleResolution": "classic",
-    "target": "es5",
+    "moduleResolution": "node",
+    "target": "es3",
     "typeRoots": [
       "node_modules/@types"
     ]
