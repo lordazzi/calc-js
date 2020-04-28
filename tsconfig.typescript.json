@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "amd",
+    "moduleResolution": "classic"
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "./sandbox.ts"
+  ]
+}
