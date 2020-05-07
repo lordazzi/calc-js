@@ -16,9 +16,32 @@ export class Calc {
   private operations: Operation[] = [];
   private customConfig = ConfigService.defaultConfig;
 
-  //  it will throw if this isn't a valid number
-  static checkNumber(value: number, config?: CalcConfig): void {
-    NumberValidator.getInstance().validateSingleNumber(value, config);
+  /**
+   * It will throw (or console it) if this isn't a valid number.
+   * @returns if is valid return true, if is invalid return false.
+   *
+   * @param value
+   * Number to be verified
+   *
+   * @param complementaryErrorMessage
+   * Aditional information to add to the error object (this will come first)
+   *
+   * @param config
+   * Some overriden configuration
+   */
+  static checkNumber(value: number, complementaryErrorMessage?: string, config?: CalcConfig): boolean {
+    const errorMessage = NumberValidator.getInstance().validateSingleNumber(
+      value, complementaryErrorMessage, config
+    );
+
+    if (errorMessage) {
+      const definitiveConfig = ConfigService.getInstance().createConfigs(config);
+      ErrorService.getInstance().emitError(definitiveConfig, errorMessage);
+
+      return false;
+    }
+
+    return true;
   }
 
   static onError(calle: (error: CalcError) => void): void {

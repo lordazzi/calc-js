@@ -23,7 +23,7 @@ export class NumberValidator {
     completeEquation: Equation,
     calcConfig: CalcConfig
   ): string | null {
-    const errorMessage = this.validateSingleNumber(value, calcConfig);
+    const errorMessage = this.validateSingleNumber(value, undefined, calcConfig);
 
     if (errorMessage) {
       return this.generateErrorMessage(value, executedEquation, completeEquation, errorMessage);
@@ -32,31 +32,43 @@ export class NumberValidator {
     return null;
   }
 
-  validateSingleNumber(value: number, customConfig?: CalcConfig): string | null {
+  validateSingleNumber(
+    value: number,
+    complementaryErrorMessage?: string,
+    customConfig?: CalcConfig
+  ): string | null {
     const config = ConfigService.getInstance().createConfigs(customConfig);
 
     if (config.throwNaN) {
       const checkNaNMessage = this.checkNaN(value);
       if (checkNaNMessage) {
-        return checkNaNMessage;
+        return this.joinMessages(checkNaNMessage, complementaryErrorMessage);
       }
     }
 
     if (config.throwInfinite) {
       const checkInfiniteMessage = this.checkInfinite(value);
       if (checkInfiniteMessage) {
-        return checkInfiniteMessage;
+        return this.joinMessages(checkInfiniteMessage, complementaryErrorMessage);
       }
     }
 
     if (config.throwUnsafeNumber) {
       const checkUnsafeNumberMessage = this.checkUnsafeNumber(value);
       if (checkUnsafeNumberMessage) {
-        return checkUnsafeNumberMessage;
+        return this.joinMessages(checkUnsafeNumberMessage, complementaryErrorMessage);
       }
     }
 
     return null;
+  }
+
+  private joinMessages(message: string, complementaryErrorMessage: string | undefined): string {
+    if (complementaryErrorMessage) {
+      return `${complementaryErrorMessage}\n${message}`;
+    }
+
+    return message;
   }
 
   private generateErrorMessage(
