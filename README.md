@@ -162,7 +162,7 @@ Calc.divide(10, 0, localConfig);
 ```typescript
 const localConfig = { thrownStrategy: 'thrown' };
 //  it will throw if this isn't a valid number
-Calc.checkNumber(Infinity, localConfig);
+Calc.checkNumber(Infinity, 'Validating data from query param', localConfig);
 ```
 
 ## Contributing
