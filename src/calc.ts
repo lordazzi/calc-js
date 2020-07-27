@@ -105,10 +105,6 @@ export class Calc {
       }, this.customConfig);
     }
 
-    this.errorService.emitError(
-      this.customConfig, `More then one number is needed to create an equation, only the number ${this.baseNumber} was given`
-    );
-
     return baseNumber;
   }
 }
