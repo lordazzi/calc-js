@@ -11,7 +11,6 @@ export class Calc {
 
   private readonly calcBuild = CalcBuild.getInstance();
   private readonly configService = ConfigService.getInstance();
-  private readonly errorService = ErrorService.getInstance();
 
   private operations: Operation[] = [];
   private customConfig = ConfigService.defaultConfig;
@@ -92,6 +91,11 @@ export class Calc {
 
   multiply(value: number): Calc {
     this.operations.push({ type: '*', value });
+    return this;
+  }
+
+  pipe(lambda: (n: number) => number): Calc {
+    this.operations.push(lambda);
     return this;
   }
 

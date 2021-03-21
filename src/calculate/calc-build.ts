@@ -48,7 +48,12 @@ export class CalcBuild {
     let finalResult = equation.baseNumber;
 
     while (operation = equationCopy.shift()) {
-      finalResult = CalcBuild.calcMap[operation.type](finalResult, operation.value);
+      if (typeof operation === 'function') {
+        finalResult = operation(finalResult);
+      } else {
+        finalResult = CalcBuild.calcMap[operation.type](finalResult, operation.value);
+      }
+
       executedEquation.operations.push(operation);
       this.validate(finalResult, executedEquation as Equation, equation, config);
     }
@@ -81,8 +86,10 @@ export class CalcBuild {
   private validateEquation(equation: Equation, config: CalcConfig): void {
     this.validate(equation.baseNumber, null, equation, config);
 
-    equation.operations.forEach(operation =>
-      this.validate(operation.value, null, equation, config)
-    );
+    equation.operations.forEach(operation => {
+      if (typeof operation !== 'function') {
+        this.validate(operation.value, null, equation, config)
+      }
+    });
   }
 }
