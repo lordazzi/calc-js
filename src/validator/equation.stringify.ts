@@ -7,7 +7,11 @@ export function equationStringify(equation: Equation): string {
   let operation: Operation | undefined;
 
   while (operation = operationsCopy.shift()) {
-    stringifiedEquation = `(${stringifiedEquation} ${operation.type} ${operation.value})`;
+    if (typeof operation === 'function') {
+      stringifiedEquation = `(${stringifiedEquation} ${operation.name}(n) => n)`;
+    } else {
+      stringifiedEquation = `(${stringifiedEquation} ${operation.type} ${operation.value})`;
+    }
   }
 
   return stringifiedEquation;
