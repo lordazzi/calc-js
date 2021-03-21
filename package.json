@@ -1,6 +1,6 @@
 {
   "name": "calc-js",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Handle JavaScript operations, avoiding the native problems of the language",
   "main": "index.js",
   "scripts": {
