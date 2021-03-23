@@ -88,7 +88,7 @@ export class CalcBuild {
 
     equation.operations.forEach(operation => {
       if (typeof operation !== 'function') {
-        this.validate(operation.value, null, equation, config)
+        this.validate(operation.value, null, equation, config);
       }
     });
   }
