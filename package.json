@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/jasmine": "3.5.10",
     "@types/node": "13.13.2",
-    "gulp": "3.9.1",
+    "gulp": "4.0.2",
     "gulp-concat": "2.6.1",
     "gulp-minify": "3.1.0",
     "gulp-rename": "2.0.0",
