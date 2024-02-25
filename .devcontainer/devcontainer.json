@@ -10,7 +10,8 @@
       "extensions": [
         "ms-vscode.vscode-typescript-next",
         "eamodio.gitlens",
-        "wix.vscode-import-cost"
+        "wix.vscode-import-cost",
+        "yile-ou.paddy-color-theme"
       ]
     }
   }
