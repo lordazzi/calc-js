@@ -11,7 +11,9 @@
         "ms-vscode.vscode-typescript-next",
         "eamodio.gitlens",
         "wix.vscode-import-cost",
-        "yile-ou.paddy-color-theme"
+        "yile-ou.paddy-color-theme",
+        "dbaeumer.vscode-eslint",
+        "Orta.vscode-jest"
       ]
     }
   }

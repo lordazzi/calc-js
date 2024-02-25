@@ -19,6 +19,7 @@ export class ConfigService {
     return this.instance;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() { }
 
   static configure(config: CalcConfig): void {

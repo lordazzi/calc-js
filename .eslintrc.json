@@ -1,0 +1,164 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "ban",
+    "@typescript-eslint"
+  ],
+  "ignorePatterns": [
+    "packages/**/*.test.ts",
+    "dist/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "warn",
+          {
+            "selector": [
+              "classProperty",
+              "objectLiteralProperty",
+              "typeProperty",
+              "classMethod",
+              "objectLiteralMethod",
+              "typeMethod",
+              "accessor",
+              "enumMember"
+            ],
+            "format": [
+              "camelCase",
+              "PascalCase",
+              "UPPER_CASE"
+            ]
+          }
+        ],
+        "@typescript-eslint/member-ordering": "off",
+        "@typescript-eslint/member-delimiter-style": "off",
+        "prefer-arrow/prefer-arrow-functions": "off",
+        "@typescript-eslint/ban-types": [
+          "warn",
+          {
+            "extendDefaults": false,
+            "types": {
+              "Boolean": {
+                "message": "Avoid using the `Boolean` type.",
+                "fixWith": "boolean"
+              },
+              "Number": {
+                "message": "Avoid using the `Number` type.",
+                "fixWith": "number"
+              },
+              "String": {
+                "message": "Avoid using the `String` type.",
+                "fixWith": "string"
+              }
+            }
+          }
+        ],
+        "ban/ban": [
+          "error",
+          {
+            "name": "eval",
+            "message": "don't use eval"
+          }
+        ],
+        "max-lines": [
+          "warn",
+          300
+        ],
+        "eqeqeq": "warn",
+        "@typescript-eslint/ban-ts-comment": [
+          "warn",
+          {
+            "ts-ignore": false
+          }
+        ],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "no-public"
+          }
+        ],
+        "@typescript-eslint/no-empty-function": "error",
+        "@typescript-eslint/no-floating-promises": "error",
+        "@typescript-eslint/prefer-for-of": "off",
+        "@typescript-eslint/unbound-method": "error",
+        "@typescript-eslint/adjacent-overload-signatures": "warn",
+        "@typescript-eslint/no-magic-numbers": [
+          "error",
+          {
+            "ignoreEnums": true,
+            "ignoreReadonlyClassProperties": true,
+            "ignoreNumericLiteralTypes": true,
+            "ignore": [
+              0,
+              1
+            ]
+          }
+        ],
+        "no-cond-assign": [
+          "off"
+        ],
+        "quotes": [
+          "off"
+        ],
+        "arrow-parens": [
+          "off",
+          "always"
+        ],
+        "complexity": [
+          "error",
+          {
+            "max": 7
+          }
+        ],
+        "import/order": "off",
+        "jsdoc/check-alignment": "off",
+        "jsdoc/newline-after-description": "off",
+        "no-empty": [
+          "error",
+          {
+            "allowEmptyCatch": true
+          }
+        ],
+        "no-unused-expressions": "warn",
+        "no-eval": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/consistent-type-assertions": [
+          "warn",
+          {
+            "assertionStyle": "as",
+            "objectLiteralTypeAssertions": "allow-as-parameter"
+          }
+        ],
+        "arrow-body-style": [
+          "off"
+        ],
+        "one-var": [
+          "off",
+          "never"
+        ],
+        "max-classes-per-file": [
+          "off",
+          1
+        ],
+        "@typescript-eslint/explicit-function-return-type": [
+          "error",
+          {
+            "allowExpressions": true
+          }
+        ]
+      }
+    }
+  ]
+}

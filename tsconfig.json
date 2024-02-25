@@ -10,15 +10,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
-      "es2015",
-      "es6",
-      "dom"
+      "ES2022",
+      "DOM"
     ],
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es3",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "target": "ES2020"
   }
 }

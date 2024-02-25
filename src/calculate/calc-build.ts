@@ -38,6 +38,7 @@ export class CalcBuild {
     ConfigService.configure(config);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() { }
 
   calculate(equation: Equation, config: CalcConfig): number {

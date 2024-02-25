@@ -15,6 +15,7 @@ export class ErrorService {
     return this.instance;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() { }
 
   onError(calle: (error: CalcError) => void): void {

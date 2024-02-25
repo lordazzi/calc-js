@@ -15,6 +15,7 @@ export class NumberValidator {
     return this.instance;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() { }
 
   validate(

@@ -5,7 +5,6 @@ Handle JavaScript operations, avoiding the native problems of the language.
 [![npm version](https://badge.fury.io/js/calc-js.svg)](https://badge.fury.io/js/calc-js)
 [![Npm Total Downloads](https://img.shields.io/npm/dt/calc-js.svg)](https://github.com/lordazzi/calc-js)
 [![Npm Monthly Downloads](https://img.shields.io/npm/dm/calc-js.svg)](https://github.com/lordazzi/calc-js)
-[![Build Status](https://travis-ci.org/lordazzi/calc-js.svg?branch=master)](https://travis-ci.org/lordazzi/calc-js)
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/lordazzi/calc-js/blob/documentation/LICENSE)
 
 ## The problem
