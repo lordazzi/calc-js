@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Calc } from './index';
+import { Calc } from '.';
 
 describe('Calc', () => {
   it('Testando soma comum', () => {

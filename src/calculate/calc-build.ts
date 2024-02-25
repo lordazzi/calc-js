@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { CalcConfig } from '../config/calc-config';
 import { ConfigService } from '../config/config.service';
 import { Operation } from '../domain/operation.model';
