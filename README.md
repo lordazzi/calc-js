@@ -192,5 +192,5 @@ Follow the steps:
  * Create a branch in your forked repository, then code the feature or fix the bug;
  * Run `npm run lint`, `npm run test` and `npm run build` in the repository;
  * Create a Pull Request from your repository to this one, with the issue in the body and some information you think could be usefull to the reviewer (print or a [gif of it working](https://www.screentogif.com/) will be appreciated);
- * The reviewer can ask some changes, don't be mad, this is the GIT Flow process;
+ * The reviewer can ask some changes, don't be mad, this is the process;
  * You get approved and your branch with the feature / fix 

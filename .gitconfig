@@ -1,0 +1,9 @@
+[user]
+    email = ricardoazzi91@hotmail.com
+    name = Ricardo Azzi Silva
+
+[core]
+    editor = code --wait
+
+[safe]
+    directory = /calc-js

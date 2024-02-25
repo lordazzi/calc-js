@@ -3,3 +3,4 @@ build
 .vscode
 debug.log
 sandbox.ts
+.ssh
