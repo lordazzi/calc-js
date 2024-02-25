@@ -12,7 +12,4 @@ RUN ssh-add -D && ssh-add /root/.ssh/id_ed25519 || true
 ENV LANG C.UTF-8
 ENV TZ America/Sao_Paulo
 
-EXPOSE 9229
-EXPOSE 4200
-
 CMD [ "/bin/bash" ]

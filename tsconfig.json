@@ -8,6 +8,7 @@
     "noImplicitThis": false,
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
+    "outDir": "dist",
     "experimentalDecorators": true,
     "lib": [
       "ES2022",

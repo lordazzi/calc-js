@@ -10,5 +10,4 @@ services:
     working_dir: /calc-js
     volumes:
       - ..:/calc-js:cached
-      - /var/run/docker.sock:/var/run/docker.sock
     tty: true

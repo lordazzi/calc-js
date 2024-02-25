@@ -4,3 +4,4 @@ build
 debug.log
 sandbox.ts
 .ssh
+dist
