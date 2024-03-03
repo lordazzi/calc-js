@@ -99,6 +99,10 @@ export class Calc {
     return this;
   }
 
+  valueOf(): number {
+    return this.finish();
+  }
+
   finish(): number {
     const operations = this.operations;
     const baseNumber = this.baseNumber;
