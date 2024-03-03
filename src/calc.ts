@@ -48,7 +48,7 @@ export class Calc {
   }
 
   static configure(config: CalcConfig): void {
-    ConfigService.getInstance().createConfigs(config);
+    ConfigService.configure(config);
   }
 
   static sum(x: number, y: number, config?: CalcConfig): number {

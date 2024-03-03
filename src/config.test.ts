@@ -1,8 +1,9 @@
 /* eslint-disable */
 import { Calc, CalcError } from '.';
+import { ConfigService } from './config/config.service';
 
-describe('Validando configurações com thrownStrategy em "thrown"', () => {
-  it('Configurações em operação que deve quebrar por ocorrência de infinito', () => {
+describe('[1] Validando configurações com thrownStrategy em "thrown"', () => {
+  it('[1] Configurações em operação que deve quebrar por ocorrência de infinito', () => {
 
     expect(() => new Calc(10, {
       throwInfinite: true,
@@ -15,7 +16,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .toThrow(CalcError);
   });
 
-  it('Configurações em operação que deve quebrar por ocorrência de infinito', () => {
+  it('[2] Configurações em operação que deve quebrar por ocorrência de infinito', () => {
 
     expect(() => new Calc(10, {
       throwInfinite: true,
@@ -28,7 +29,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .toThrow(CalcError);
   });
 
-  it('Configurações em operação que deve quebrar por ocorrência de infinito', () => {
+  it('[3] Configurações em operação que deve quebrar por ocorrência de infinito', () => {
 
     expect(() => new Calc(10, {
       throwInfinite: true,
@@ -41,7 +42,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .toThrow(CalcError);
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de unsafe number', () => {
+  it('[4] Configurações global deve fazer equação quebrar por ocorrência de unsafe number', () => {
 
     expect(() => new Calc(10, {
       throwInfinite: false,
@@ -54,7 +55,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .toThrow(CalcError);
   });
 
-  it('Ignorando exceção para operação que resulta infinito', () => {
+  it('[5] Ignorando exceção para operação que resulta infinito', () => {
 
     const result = new Calc(10, {
       throwInfinite: false,
@@ -68,7 +69,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     expect(result).toBeGreaterThanOrEqual(Infinity);
   });
 
-  it('Ignorando exceção para operação que resulta NaN', () => {
+  it('[6] Ignorando exceção para operação que resulta NaN', () => {
 
     const result = new Calc(10, {
       throwInfinite: false,
@@ -79,10 +80,10 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .divide(NaN)
     .finish();
 
-    expect(result).toBe('NaN');
+    expect(String(result)).toBe('NaN');
   });
 
-  it('Ignorando exceção para operação que resulta NaN', () => {
+  it('[7] Ignorando exceção para operação que resulta NaN', () => {
 
     const result = new Calc(10, {
       throwInfinite: true,
@@ -93,10 +94,10 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .divide(NaN)
     .finish();
 
-    expect(result).toBe('NaN');
+    expect(String(result)).toBe('NaN');
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
+  it('[8] Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
 
     Calc.configure({
       throwInfinite: true,
@@ -111,7 +112,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .toThrow(CalcError);
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
+  it('[9] Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
 
     Calc.configure({
       throwInfinite: true,
@@ -126,7 +127,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .toThrow(CalcError);
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
+  it('[10] Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
 
     Calc.configure({
       throwInfinite: true,
@@ -141,7 +142,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .toThrow(CalcError);
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de unsafe number', () => {
+  it('[11] Configurações global deve fazer equação quebrar por ocorrência de unsafe number', () => {
 
     Calc.configure({
       throwInfinite: false,
@@ -156,7 +157,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .toThrow(CalcError);
   });
 
-  it('Ignorando exceção para operação que resulta infinito', () => {
+  it('[12] Ignorando exceção para operação que resulta infinito', () => {
 
     Calc.configure({
       throwInfinite: false,
@@ -172,7 +173,7 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     expect(result).toBeGreaterThanOrEqual(Infinity);
   });
 
-  it('Ignorando exceção para operação que resulta NaN', () => {
+  it('[13] Ignorando exceção para operação que resulta NaN', () => {
 
     Calc.configure({
       throwInfinite: false,
@@ -185,11 +186,10 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .divide(NaN)
     .finish();
 
-    expect(result).toBe('NaN');
+    expect(String(result)).toBe('NaN');
   });
 
-
-  it('Ignorando exceção para operação que resulta NaN', () => {
+  it('[14] Ignorando exceção para operação que resulta NaN', () => {
 
     Calc.configure({
       throwInfinite: true,
@@ -202,12 +202,12 @@ describe('Validando configurações com thrownStrategy em "thrown"', () => {
     .divide(NaN)
     .finish();
 
-    expect(result).toBe('NaN');
+    expect(String(result)).toBe('NaN');
   });
 });
 
-describe('Validando configurações com thrownStrategy em "emit-event"', () => {
-  it('Configurações em operação que deve quebrar por ocorrência de infinito', () => {
+describe('[2] Validando configurações com thrownStrategy em "emit-event"', () => {
+  it('[1] Configurações em operação que deve quebrar por ocorrência de infinito', () => {
     Calc.onError(error => expect(error).toBeInstanceOf(CalcError));
 
     const result = new Calc(10, {
@@ -220,7 +220,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     .finish();
   });
 
-  it('Configurações em operação que deve quebrar por ocorrência de infinito', () => {
+  it('[2] Configurações em operação que deve quebrar por ocorrência de infinito', () => {
     Calc.onError(error => expect(error).toBeInstanceOf(CalcError));
 
     const result = new Calc(10, {
@@ -233,7 +233,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     .finish();
   });
 
-  it('Configurações em operação que deve quebrar por ocorrência de infinito', () => {
+  it('[3] Configurações em operação que deve quebrar por ocorrência de infinito', () => {
     Calc.onError(error => expect(error).toBeInstanceOf(CalcError));
 
     const result = new Calc(10, {
@@ -246,7 +246,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     .finish();
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de unsafe number', () => {
+  it('[4] Configurações global deve fazer equação quebrar por ocorrência de unsafe number', () => {
     Calc.onError(error => expect(error).toBeInstanceOf(CalcError));
 
     const result = new Calc(10, {
@@ -259,7 +259,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     .finish();
   });
 
-  it('Ignorando exceção para operação que resulta infinito', () => {
+  it('[5] Ignorando exceção para operação que resulta infinito', () => {
 
     const result = new Calc(10, {
       throwInfinite: false,
@@ -273,7 +273,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     expect(result).toBeGreaterThanOrEqual(Infinity);
   });
 
-  it('Ignorando exceção para operação que resulta NaN', () => {
+  it('[6] Ignorando exceção para operação que resulta NaN', () => {
 
     const result = new Calc(10, {
       throwInfinite: false,
@@ -284,10 +284,10 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     .divide(NaN)
     .finish();
 
-    expect(result.toString()).toBe('NaN');
+    expect(String(result)).toBe('NaN');
   });
 
-  it('Ignorando exceção para operação que resulta NaN', () => {
+  it('[7] Ignorando exceção para operação que resulta NaN', () => {
 
     const result = new Calc(10, {
       throwInfinite: true,
@@ -298,10 +298,10 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     .divide(NaN)
     .finish();
 
-    expect(result.toString()).toBe('NaN');
+    expect(String(result)).toBe('NaN');
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
+  it('[8] Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
     Calc.onError(error => expect(error).toBeInstanceOf(CalcError));
 
     Calc.configure({
@@ -316,7 +316,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
       .finish();
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
+  it('[9] Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
     Calc.onError(error => expect(error).toBeInstanceOf(CalcError));
 
     Calc.configure({
@@ -331,7 +331,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
       .finish();
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
+  it('[10] Configurações global deve fazer equação quebrar por ocorrência de infinito', () => {
     Calc.onError(error => expect(error).toBeInstanceOf(CalcError));
 
     Calc.configure({
@@ -346,7 +346,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
       .finish();
   });
 
-  it('Configurações global deve fazer equação quebrar por ocorrência de unsafe number', () => {
+  it('[11] Configurações global deve fazer equação quebrar por ocorrência de unsafe number', () => {
     Calc.onError(error => expect(error).toBeInstanceOf(CalcError));
 
     Calc.configure({
@@ -361,7 +361,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     .finish();
   });
 
-  it('Ignorando exceção para operação que resulta infinito', () => {
+  it('[12] Ignorando exceção para operação que resulta infinito', () => {
 
     Calc.configure({
       throwInfinite: false,
@@ -377,7 +377,7 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     expect(result).toBeGreaterThanOrEqual(Infinity);
   });
 
-  it('Ignorando exceção para operação que resulta NaN', () => {
+  it('[13] Ignorando exceção para operação que resulta NaN', () => {
 
     Calc.configure({
       throwInfinite: false,
@@ -390,11 +390,10 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     .divide(NaN)
     .finish();
 
-    expect(result.toString()).toBe('NaN');
+    expect(String(result)).toBe('NaN');
   });
 
-
-  it('Ignorando exceção para operação que resulta NaN', () => {
+  it('[14] Ignorando exceção para operação que resulta NaN', () => {
 
     Calc.configure({
       throwInfinite: true,
@@ -407,6 +406,6 @@ describe('Validando configurações com thrownStrategy em "emit-event"', () => {
     .divide(NaN)
     .finish();
 
-    expect(result.toString()).toBe('NaN');
+    expect(String(result)).toBe('NaN');
   });
 });

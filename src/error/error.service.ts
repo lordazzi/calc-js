@@ -24,8 +24,11 @@ export class ErrorService {
 
   emitError(config: CalcConfig, error: string): void {
     const calcError = new CalcError(error);
-    if (config.thrownStrategy === 'emit-event' && this.errorEventEmitter) {
-      this.errorEventEmitter(calcError);
+
+    if (config.thrownStrategy === 'emit-event') {
+      if (this.errorEventEmitter) {
+        this.errorEventEmitter(calcError);
+      }
     } else if (config.thrownStrategy === 'console') {
       console.error(calcError);
     } else {
