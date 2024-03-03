@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { CalcConfig } from '../config/calc-config';
 import { ConfigService } from '../config/config.service';
 import { Operation } from '../domain/operation.model';
@@ -38,6 +39,7 @@ export class CalcBuild {
     ConfigService.configure(config);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() { }
 
   calculate(equation: Equation, config: CalcConfig): number {

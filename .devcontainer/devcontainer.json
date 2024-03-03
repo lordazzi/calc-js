@@ -1,0 +1,20 @@
+{
+  "name": "Existing Docker Compose (Extend)",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "calc-js-dev",
+  "workspaceFolder": "/calc-js",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "eamodio.gitlens",
+        "wix.vscode-import-cost",
+        "yile-ou.paddy-color-theme",
+        "dbaeumer.vscode-eslint",
+        "Orta.vscode-jest"
+      ]
+    }
+  }
+}
