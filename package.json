@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest .",
     "lint": "eslint .",
-    "build": "tsc ."
+    "build": "rm -rf dist && tsc --project tsconfig.json && cp package.json README.md LICENSE dist"
   },
   "repository": {
     "type": "git",
