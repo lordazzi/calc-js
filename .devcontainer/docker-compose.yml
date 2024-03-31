@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  calc-js-dev:
+    image: calc-js-dev
+    container_name: calc-js-dev
+    build:
+      context: ../.
+      dockerfile: ./.devcontainer/Dockerfile
+    working_dir: /calc-js
+    volumes:
+      - ..:/calc-js:cached
+    tty: true

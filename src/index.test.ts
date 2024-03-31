@@ -1,5 +1,5 @@
-/* tslint:disable */
-import { Calc } from './index';
+/* eslint-disable */
+import { Calc } from '.';
 
 describe('Calc', () => {
   it('Testando soma comum', () => {
@@ -171,26 +171,26 @@ describe('Calc', () => {
   });
 
   it('Testando soma números invalidos', () => {
-    expect(() => new Calc(1).sum(NaN).finish()).toThrow();
+    expect(() => new Calc(1, { thrownStrategy: 'thrown' }).sum(NaN).finish()).toThrow();
   });
 
   it('Testando soma com valores infinitos', () => {
-    expect(() => new Calc(1).sum(Infinity).finish()).toThrow();
+    expect(() => new Calc(1, { thrownStrategy: 'thrown' }).sum(Infinity).finish()).toThrow();
   });
 
   it('Testando soma com valores infinitos', () => {
-    expect(() => new Calc(1).sum(-Infinity).finish()).toThrow();
+    expect(() => new Calc(1, { thrownStrategy: 'thrown' }).sum(-Infinity).finish()).toThrow();
   });
 
   it('Testando cálculo com divisão por zero', () => {
-    expect(() => new Calc(10).sum(10).divide(0).minus(1).finish()).toThrow();
+    expect(() => new Calc(10, { thrownStrategy: 'thrown' }).sum(10).divide(0).minus(1).finish()).toThrow();
   });
 
   it('Testando cálculo com números gigantes', () => {
-    expect(() => new Calc(1232132131).multiply(1232132131).finish()).toThrow();
+    expect(() => new Calc(1232132131, { thrownStrategy: 'thrown' }).multiply(1232132131).finish()).toThrow();
   });
 
   it('Testando cálculo com números decimais gigantes', () => {
-    expect(() => new Calc(0.00000000001).sum(0.100000000001).finish()).toThrow();
+    expect(() => new Calc(0.00000000001, { thrownStrategy: 'thrown' }).sum(0.100000000001).finish()).toThrow();
   });
 });

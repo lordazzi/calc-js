@@ -8,17 +8,17 @@
     "noImplicitThis": false,
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
+    "rootDir": "src",
+    "outDir": "dist",
     "experimentalDecorators": true,
     "lib": [
-      "es2015",
-      "es6",
-      "dom"
+      "ES2022",
+      "DOM"
     ],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "target": "es3",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
-  }
+    "module": "CommonJS",
+    "target": "ES2020"
+  },
+  "exclude": [
+    "src/**/*.test.ts"
+  ]
 }

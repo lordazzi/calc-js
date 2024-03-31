@@ -15,6 +15,7 @@ export class NumberValidator {
     return this.instance;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   private constructor() { }
 
   validate(
@@ -100,7 +101,7 @@ export class NumberValidator {
   }
 
   private checkInfinite(value: number): string | null {
-    if (!Number.isFinite(value)) {
+    if (!Number.isFinite(value) && !Number.isNaN(value)) {
       return `infinite value was found`;
     }
 

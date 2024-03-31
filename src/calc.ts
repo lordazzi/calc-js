@@ -48,7 +48,7 @@ export class Calc {
   }
 
   static configure(config: CalcConfig): void {
-    ConfigService.getInstance().createConfigs(config);
+    ConfigService.configure(config);
   }
 
   static sum(x: number, y: number, config?: CalcConfig): number {
@@ -97,6 +97,10 @@ export class Calc {
   pipe(lambda: (n: number) => number): Calc {
     this.operations.push(lambda);
     return this;
+  }
+
+  valueOf(): number {
+    return this.finish();
   }
 
   finish(): number {

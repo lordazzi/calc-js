@@ -5,7 +5,6 @@ Handle JavaScript operations, avoiding the native problems of the language.
 [![npm version](https://badge.fury.io/js/calc-js.svg)](https://badge.fury.io/js/calc-js)
 [![Npm Total Downloads](https://img.shields.io/npm/dt/calc-js.svg)](https://github.com/lordazzi/calc-js)
 [![Npm Monthly Downloads](https://img.shields.io/npm/dm/calc-js.svg)](https://github.com/lordazzi/calc-js)
-[![Build Status](https://travis-ci.org/lordazzi/calc-js.svg?branch=master)](https://travis-ci.org/lordazzi/calc-js)
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/lordazzi/calc-js/blob/documentation/LICENSE)
 [![Package Quality](https://packagequality.com/badge/calc-js.png)](https://packagequality.com/#?package=calc-js)
 
@@ -193,5 +192,5 @@ Follow the steps:
  * Create a branch in your forked repository, then code the feature or fix the bug;
  * Run `npm run lint`, `npm run test` and `npm run build` in the repository;
  * Create a Pull Request from your repository to this one, with the issue in the body and some information you think could be usefull to the reviewer (print or a [gif of it working](https://www.screentogif.com/) will be appreciated);
- * The reviewer can ask some changes, don't be mad, this is the GIT Flow process;
+ * The reviewer can ask some changes, don't be mad, this is the process;
  * You get approved and your branch with the feature / fix 
