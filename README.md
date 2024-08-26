@@ -38,11 +38,6 @@ npm install calc-js --save
 var Calc = require('calc-js').Calc;
 ```
 
-```html
-<!-- browser -->
-<script src="calc-js/calc.latest.min.js"></script>
-```
-
 ```typescript
 //  typescript
 import { Calc } from 'calc-js';
